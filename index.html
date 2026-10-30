@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Ruta del Experto — Arándano y seguridad alimentaria en Colombia</title>
-<meta name="description" content="App de estudio para volverse asesor experto en arándano y seguridad alimentaria en Colombia: 10 módulos, quizzes, casos reales, cifras 2026 con fuentes y glosario. Español / English.">
+<meta name="description" content="App de estudio para volverse asesor experto en arándano y seguridad alimentaria en Colombia: 10 módulos, 4 guías completas, plan de 12 semanas, cursos certificados, casos reales, cifras 2026 con fuentes y glosario. Español / English.">
 <meta name="theme-color" content="#151a3f">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ruta del Experto — Arándano y seguridad alimentaria">
@@ -183,6 +183,32 @@ section{padding:26px 0 6px}
 .flash .fa{background:linear-gradient(135deg,var(--night),var(--berry));color:#fff;font-family:Fraunces,serif;font-size:1.7rem;font-weight:800}
 .flash .fb2{background:var(--card);border:1px solid var(--line);transform:rotateY(180deg);font-size:1.02rem}
 
+/* guías */
+.gcard{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;padding:0;overflow:hidden;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
+.gcard img{width:120px;height:100%;min-height:130px;object-fit:cover}
+.gcard .in{padding:14px 14px 14px 0}
+.gcard h3{font-size:1.08rem;margin:.3em 0}
+@media(min-width:720px){.gcard{grid-template-columns:180px 1fr}.gcard img{width:180px}}
+.reader h4{font-family:Fraunces,serif;font-size:1.12rem;margin:1.1em 0 .3em}
+.reader .body{font-size:1.03rem}
+.reader .cimg{height:200px;border-radius:14px;overflow:hidden;margin:4px 0 14px}
+.reader .cimg img{width:100%;height:100%;object-fit:cover;animation:kb 18s ease-in-out infinite alternate}
+.toc{display:grid;gap:6px;margin:8px 0 16px}
+.toc button{text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:10px 12px;font-weight:700;font-size:.9rem;display:flex;justify-content:space-between;gap:8px}
+.toc button.cur{border-color:var(--bloom)}
+.toc button span{color:var(--leaf);font-size:.75rem;white-space:nowrap}
+.tb{width:100%;border-collapse:collapse;font-size:.88rem;margin:8px 0}
+.tb th,.tb td{border:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+.tb th{background:var(--frost)}
+.tpl{background:var(--frost);border-radius:14px;padding:16px;font-family:ui-monospace,Menlo,monospace;font-size:.86rem;line-height:1.55}
+.week{display:grid;grid-template-columns:86px 1fr;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
+.week b{font-family:Fraunces,serif}
+.ext{display:block;text-decoration:none;color:inherit}
+.ext .org{font-family:Fraunces,serif;font-weight:800;font-size:1.6rem;color:var(--berry);line-height:1}
+@media (prefers-color-scheme:dark){.ext .org{color:var(--bloom)}}
+.lib{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;text-decoration:none;color:inherit;padding:10px 0;border-bottom:1px solid var(--line)}
+.lib img{width:90px;height:70px;object-fit:cover;border-radius:10px}
+.tabs button{font-size:.72rem}
 footer{padding:26px 0 30px;color:var(--mute);font-size:.82rem;text-align:center}
 
 /* navegación inferior */
@@ -210,30 +236,34 @@ footer{padding:26px 0 30px;color:var(--mute);font-size:.82rem;text-align:center}
   <div class="view" id="v-ruta"></div>
   <div class="view" id="v-mod"></div>
   <div class="view" id="v-exam"></div>
+  <div class="view" id="v-cur"></div>
+  <div class="view" id="v-guide"></div>
   <div class="view" id="v-cifras"></div>
   <div class="view" id="v-casos"></div>
   <div class="view" id="v-glos"></div>
 </main>
 
 <nav class="tabs" id="tabs">
-  <button data-v="home"></button><button data-v="ruta"></button><button data-v="cifras"></button><button data-v="casos"></button><button data-v="glos"></button>
+  <button data-v="home"></button><button data-v="ruta"></button><button data-v="cur"></button><button data-v="cifras"></button><button data-v="casos"></button><button data-v="glos"></button>
 </nav>
 <div class="toast" id="toast"></div>
 
 <script src="data.js"></script>
+<script src="guias.js"></script>
 <script>
-const D=window.DATA, $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const D=window.DATA,G=window.GUIAS, $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 let L='es';
 try{L=localStorage.getItem('ea-lang')||((navigator.language||'es').startsWith('en')?'en':'es')}catch(e){}
 const t=(es,en)=>L==='en'?en:es, T=a=>a?(L==='en'?a[1]:a[0]):'';
 const nf=(n,d=0)=>n.toLocaleString(L==='en'?'en-US':'es-CO',{minimumFractionDigits:d,maximumFractionDigits:d});
 
 /* progreso guardado en este navegador */
-let P={read:{},quiz:{},cases:{},exam:null};
+let P={read:{},quiz:{},cases:{},exam:null,gread:{}};
 try{P=Object.assign(P,JSON.parse(localStorage.getItem('ea-prog')||'{}'))}catch(e){}
+P.gread=P.gread||{};
 const save=()=>{try{localStorage.setItem('ea-prog',JSON.stringify(P))}catch(e){}};
 const modDone=m=>{const r=(P.read[m.id]||[]).length>=m.lessons.length, q=(P.quiz[m.id]||0)>=4;return r&&q};
-function pct(){let tot=0,got=0;D.modules.forEach(m=>{tot+=m.lessons.length+5;got+=Math.min((P.read[m.id]||[]).length,m.lessons.length)+(P.quiz[m.id]||0)});tot+=D.cases.length;got+=Object.keys(P.cases).length;return Math.round(got/tot*100)}
+function pct(){let tot=0,got=0;D.modules.forEach(m=>{tot+=m.lessons.length+5;got+=Math.min((P.read[m.id]||[]).length,m.lessons.length)+(P.quiz[m.id]||0)});tot+=D.cases.length;got+=Object.keys(P.cases).length;G.guides.forEach(g=>{tot+=g.ch.length;got+=Math.min((P.gread[g.id]||[]).length,g.ch.length)});return Math.round(got/tot*100)}
 function level(){const p=pct(),ex=P.exam;if(ex&&ex>=17&&p>=90)return[t('Experto','Expert'),t('Dominas la ruta completa','You’ve mastered the full route')];
  if(p>=60)return[t('Asesor','Adviser'),t('Ya puedes dar conceptos','You can give opinions now')];
  if(p>=25)return[t('Conocedor','Practitioner'),t('Vas por buen camino','You’re on track')];
@@ -286,6 +316,13 @@ function home(){
     ${[[t('Aprende','Learn'),t('Lee cada lección y quédate con la idea clave del asesor.','Read each lesson and keep the adviser’s key idea.'),'yema'],[t('Demuestra','Prove it'),t('Responde el quiz de cada módulo. Con 4 de 5 lo dominas.','Take each module quiz. 4 out of 5 means mastered.'),'calidad-fresco'],[t('Asesora','Advise'),t('Resuelve casos reales y presenta el examen final.','Solve real cases and take the final exam.'),'cosecheros']].map((x,i)=>`
     <div class="card reveal" style="padding:0;overflow:hidden"><img src="${img(x[2])}" alt="" style="height:130px;width:100%;object-fit:cover"><div style="padding:16px"><span class="tag">${t('Paso','Step')} ${i+1}</span><h3 style="margin-top:8px">${x[0]}</h3><p class="muted" style="margin:0">${x[1]}</p></div></div>`).join('')}
    </div>
+  </section>
+  <section>
+   <div class="kicker">${t('Para estudiar a fondo','For in‑depth study')}</div>
+   <h2>${t('Guías completas y cursos','Full guides and courses')}</h2>
+   <p class="sub">${t('Cuatro guías para leer con calma, un plan de 12 semanas y cursos gratuitos con certificado de la FAO, el IICA y el SENA.','Four guides to read at your pace, a 12‑week plan and free certified courses from FAO, IICA and SENA.')}</p>
+   <div class="grid g2">${G.guides.map(g=>`<button class="card gcard reveal" onclick="openGuide('${g.id}')"><img src="${img(g.img)}" alt="" loading="lazy"><div class="in"><span class="tag">${g.ch.length} ${t('capítulos','chapters')} · ${g.hours} h</span><h3>${T(g.title)}</h3><div class="bar" style="background:var(--frost)"><i data-w="${Math.round(Math.min((P.gread[g.id]||[]).length,g.ch.length)/g.ch.length*100)}"></i></div></div></button>`).join('')}</div>
+   <button class="btn dark" style="margin-top:4px" onclick="go('cur')">${t('Ver plan de estudio y cursos','See study plan and courses')} →</button>
   </section>
   <section>
    <div class="card reveal" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:space-between">
@@ -370,6 +407,39 @@ function exam(){
  runQuiz(qs,'exam');
 }
 
+/* ───────── CURSOS Y GUÍAS ───────── */
+function cur_(){
+ const gp=g=>Math.min((P.gread[g.id]||[]).length,g.ch.length);
+ $('#v-cur').innerHTML=`<div class="hero" style="min-height:320px"><div class="slides"><img src="${img('floracion')}" alt="" class="on"></div><div class="wrap" style="padding-top:110px"><div class="kicker">${t('Aprende a fondo','Learn in depth')}</div><h1 style="font-size:clamp(2rem,7vw,3.2rem)">${t('Guías y cursos','Guides and courses')}</h1><p>${t('Lo que necesitas leer y estudiar para asesorar de verdad, más allá de los quizzes.','What you need to read and study to truly advise, beyond the quizzes.')}</p></div></div>
+ <div class="wrap">
+ <section><div class="kicker">${t('Guías completas','Full guides')}</div><h2>${t('Lee, aplica, marca como leído','Read, apply, mark as read')}</h2>
+  <div class="grid">${G.guides.map(g=>`<button class="card gcard reveal" onclick="openGuide('${g.id}')"><img src="${img(g.img)}" alt="" loading="lazy"><div class="in"><span class="tag">${g.ch.length} ${t('capítulos','chapters')} · ${t('unas','about')} ${g.hours} h</span> ${gp(g)===g.ch.length?`<span class="tag ok">${t('Leída','Read')}</span>`:''}<h3>${T(g.title)}</h3><p class="muted" style="margin:.2em 0 .6em">${T(g.sub)}</p><div class="bar" style="background:var(--frost)"><i data-w="${Math.round(gp(g)/g.ch.length*100)}"></i></div></div></button>`).join('')}</div>
+ </section>
+ <section><div class="kicker">${t('Plan de estudio','Study plan')}</div><h2>${t('12 semanas para volverte asesor','12 weeks to become an adviser')}</h2><p class="sub">${t('Unas 4 a 5 horas por semana. Junta los módulos de la app, las guías y los cursos certificados.','About 4–5 hours a week. It combines the app modules, the guides and the certified courses.')}</p>
+  <div class="card reveal">${G.plan.map(w=>`<div class="week"><b>${T(w[0])}</b><div><b style="font-family:Manrope">${T(w[1])}</b><div class="muted">${T(w[2])}</div></div></div>`).join('')}</div>
+ </section>
+ <section><div class="kicker">${t('Cursos gratuitos con certificado','Free certified courses')}</div><h2>${t('Fórmate con las instituciones','Train with the institutions')}</h2><p class="sub">${t('Enlaces oficiales. Abren en una pestaña nueva; la inscripción es en cada plataforma.','Official links. They open in a new tab; sign up on each platform.')}</p>
+  <div class="grid g2">${G.courses.map(c=>`<a class="card ext reveal" href="${c.u}" target="_blank" rel="noopener"><div class="org">${c.org}</div><div style="margin:8px 0 4px">${c.free?`<span class="tag ok">${t('Gratis','Free')}</span> `:''}${c.cert?`<span class="tag">${t('Certificado','Certificate')}</span>`:''}</div><h3 style="font-size:1.05rem;margin:.4em 0">${T(c.t)}</h3><p class="muted" style="margin:0">${T(c.d)}</p></a>`).join('')}</div>
+ </section>
+ <section><div class="kicker">${t('Biblioteca','Library')}</div><h2>${t('Manuales y documentos para descargar','Manuals and documents to download')}</h2>
+  <div class="card reveal">${G.library.map(b=>`<a class="lib" href="${b.u}" target="_blank" rel="noopener"><img src="${img(b.img)}" alt="" loading="lazy"><div><b>${T(b.t)}</b><div class="muted">${T(b.d)}</div></div></a>`).join('')}</div>
+  <p class="src">${t('Los manuales del INIA son de Chile: la técnica sirve, pero las fechas de poda y las cifras de plata hay que adaptarlas a Colombia.','INIA manuals are Chilean: the technique applies, but pruning dates and money figures must be adapted to Colombia.')}</p>
+ </section>${foot()}</div>`;
+}
+let gCur=null,gi=0;
+function openGuide(id,c){gCur=G.guides.find(g=>g.id===id);gi=c||0;go('guide',true);renderGuide()}
+function renderGuide(){
+ const g=gCur,c=g.ch[gi],rd=P.gread[g.id]||[];
+ $('#v-guide').innerHTML=`<div class="mhero"><img src="${img(g.img)}" alt=""><div class="wrap"><span class="tag" style="background:rgba(255,255,255,.9)">${t('Guía','Guide')} · ${rd.length}/${g.ch.length} ${t('leídos','read')}</span><h2 style="margin-top:8px">${T(g.title)}</h2></div></div>
+ <div class="wrap"><button class="back" onclick="go('cur')">← ${t('Guías y cursos','Guides and courses')}</button>
+ <section style="padding-top:12px">
+  <details ${gi===0?'open':''}><summary style="font-weight:800;cursor:pointer">${t('Contenido','Contents')}</summary><div class="toc">${g.ch.map((x,k)=>`<button class="${k===gi?'cur':''}" onclick="gi=${k};renderGuide();scrollTo(0,250)">${T(x.t)}${rd.includes(k)?`<span>${t('Leído','Read')}</span>`:''}</button>`).join('')}</div></details>
+  <div class="card reader"><div class="muted">${t('Capítulo','Chapter')} ${gi+1} ${t('de','of')} ${g.ch.length}</div><h3 style="font-size:1.45rem">${T(c.t)}</h3>${c.img?`<div class="cimg"><img src="${img(c.img)}" alt=""></div>`:''}<div class="body">${T(c.b)}</div></div>
+  <div class="nav2"><button class="btn ghost" ${gi?'':'disabled style="opacity:.35"'} onclick="gi--;renderGuide();scrollTo(0,250)">← ${t('Anterior','Previous')}</button><button class="btn dark" onclick="markG();${gi<g.ch.length-1?'gi++;renderGuide();scrollTo(0,250)':"toast(t('Guía terminada','Guide finished'));go('cur')"}">${gi<g.ch.length-1?t('Leído, siguiente','Read, next'):t('Terminar guía','Finish guide')} →</button></div>
+ </section>${foot()}</div>`;
+}
+function markG(){const a=P.gread[gCur.id]=P.gread[gCur.id]||[];if(!a.includes(gi))a.push(gi);save();updMini()}
+
 /* ───────── CIFRAS ───────── */
 let cTab='hambre';
 function cifras(){
@@ -441,20 +511,20 @@ function glos(){
 }
 
 function foot(){return `<footer>${t('Contenido educativo para formación de asesores. No es asesoría financiera ni legal.','Educational content for adviser training. Not financial or legal advice.')}<br>${t('Cifras revisadas el 30 de octubre de 2026','Figures checked on 30 October 2026')} · <a href="#" onclick="cTab='fuentes';go('cifras');return false">${t('Fuentes','Sources')}</a> · <a href="#" onclick="if(confirmReset())go('home');return false">${t('Reiniciar avance','Reset progress')}</a><br><br>Vibras Positivas HM — ${t('Derechos de Autor Reservados','All Rights Reserved')} · <a href="https://vibraspositivashm.com" target="_blank" rel="noopener">vibraspositivashm.com</a></footer>`}
-function confirmReset(){if(!confirm(t('¿Borrar todo tu avance en este celular?','Erase all your progress on this phone?')))return false;P={read:{},quiz:{},cases:{},exam:null};save();updMini();toast(t('Avance reiniciado','Progress reset'));return true}
+function confirmReset(){if(!confirm(t('¿Borrar todo tu avance en este celular?','Erase all your progress on this phone?')))return false;P={read:{},quiz:{},cases:{},exam:null,gread:{}};save();updMini();toast(t('Avance reiniciado','Progress reset'));return true}
 
 /* ───────── navegación ───────── */
-const views={home,ruta,cifras,casos,glos};
+const views={home,ruta,cur:cur_,cifras,casos,glos};
 let curV='home';
 function go(v,noRender){
  curV=v;$$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
- $$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v||(v==='mod'||v==='exam')&&b.dataset.v==='ruta'));
+ $$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v||((v==='mod'||v==='exam')&&b.dataset.v==='ruta')||(v==='guide'&&b.dataset.v==='cur')));
  if(!noRender&&views[v])views[v]();
  scrollTo(0,0);setTimeout(()=>{reveal();countUp();grow()},30);
  try{history.replaceState(null,'','#'+v)}catch(e){}
 }
 function labels(){
- const n={home:t('Inicio','Home'),ruta:t('Ruta','Route'),cifras:t('Cifras','Figures'),casos:t('Casos','Cases'),glos:t('Glosario','Glossary')};
+ const n={home:t('Inicio','Home'),ruta:t('Ruta','Route'),cur:t('Cursos','Courses'),cifras:t('Cifras','Figures'),casos:t('Casos','Cases'),glos:t('Glosario','Glossary')};
  $$('#tabs button').forEach(b=>b.textContent=n[b.dataset.v]);
  $$('.pill').forEach(b=>b.classList.toggle('on',b.dataset.l===L));
  $('#brandSub').textContent=t('ARÁNDANO Y SEGURIDAD ALIMENTARIA','BLUEBERRY AND FOOD SECURITY');
@@ -463,7 +533,7 @@ function labels(){
 function updMini(){$('#miniBar').style.width=pct()+'%'}
 $$('#tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 $$('.pill').forEach(b=>b.onclick=()=>{L=b.dataset.l;try{localStorage.setItem('ea-lang',L)}catch(e){}labels();
- if(curV==='mod')renderMod();else if(curV==='exam')exam();else go(curV);setTimeout(()=>{reveal();countUp();grow()},30)});
+ if(curV==='mod')renderMod();else if(curV==='guide')renderGuide();else if(curV==='exam')exam();else go(curV);setTimeout(()=>{reveal();countUp();grow()},30)});
 labels();updMini();
 const h=(location.hash||'').slice(1);go(views[h]?h:'home');
 if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
