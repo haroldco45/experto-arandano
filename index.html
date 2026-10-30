@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ruta del Experto — Arándano y seguridad alimentaria en Colombia</title>
+<meta name="description" content="App de estudio para volverse asesor experto en arándano y seguridad alimentaria en Colombia: 10 módulos, quizzes, casos reales, cifras 2026 con fuentes y glosario. Español / English.">
+<meta name="theme-color" content="#151a3f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ruta del Experto — Arándano y seguridad alimentaria">
+<meta property="og:description" content="10 módulos, quizzes, casos de asesoría y las cifras 2026 del arándano y el hambre en Colombia, con fuentes.">
+<meta property="og:image" content="https://experto-arandano.netlify.app/og-image.jpg">
+<meta property="og:url" content="https://experto-arandano.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://experto-arandano.netlify.app/og-image.jpg">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#151a3f;--night2:#222a63;--berry:#3c48b0;--bloom:#8fa2ff;--frost:#dfe6ff;
+  --leaf:#2f7d4f;--leaf2:#e3f2e8;--amber:#c97c0e;--amber2:#fff1da;--red:#b8322a;--red2:#fde5e2;
+  --bg:#f5f4ef;--card:#fff;--ink:#1a1d2e;--mute:#5d6175;--line:#e3e2dc;
+  --r:18px;--shadow:0 12px 32px -16px rgba(21,26,63,.4);
+}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1029;--card:#181c3d;--ink:#eef0ff;--mute:#a7abc8;--line:#2a2f5a;--leaf2:#16301f;--amber2:#33260f;--red2:#3a1614;--frost:#232a5c}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.12;margin:0 0 .4em;letter-spacing:-.01em}
+h2{font-size:clamp(1.7rem,5.5vw,2.4rem)}h3{font-size:1.2rem}
+p{margin:.3em 0 .9em}a{color:var(--berry)}
+@media (prefers-color-scheme:dark){a{color:var(--bloom)}}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;cursor:pointer}
+input{font:inherit;color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+ul,ol{padding-left:1.2em;margin:.4em 0}li{margin:.25em 0}
+
+/* barra superior */
+.top{position:sticky;top:0;z-index:40;background:rgba(21,26,63,.9);backdrop-filter:blur(12px);color:#fff}
+.top .wrap{display:flex;align-items:center;gap:10px;min-height:58px}
+.brand{font-family:Fraunces,serif;font-weight:800;font-size:1.1rem;line-height:1.05;cursor:pointer}
+.brand small{display:block;font-family:Manrope;font-weight:700;font-size:.6rem;color:var(--bloom);letter-spacing:.04em;white-space:nowrap}
+.sp{flex:1}
+.pill{border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:999px;padding:6px 12px;font-weight:800;font-size:.78rem}
+.pill.on{background:#fff;color:var(--night)}
+.mini{height:4px;background:rgba(255,255,255,.12)}
+.mini i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--bloom),#fff);transition:width .8s ease}
+
+/* portada */
+.hero{position:relative;min-height:470px;color:#fff;overflow:hidden;background:var(--night)}
+.slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease;animation:kb 16s ease-in-out infinite alternate}
+.slides img.on{opacity:1}
+@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.18) translate(-2%,-2%)}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,26,63,.2),rgba(21,26,63,.6) 45%,rgba(21,26,63,.97))}
+.hero .wrap{position:relative;z-index:2;padding-top:96px;padding-bottom:26px}
+.kicker{font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--bloom)}
+.hero h1{font-size:clamp(2.2rem,8.5vw,4rem);margin:.15em 0 .25em}
+.hero p{max-width:580px;color:#e3e6ff}
+.herorow{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.ring{position:relative;width:104px;height:104px;flex:0 0 auto}
+.ring svg{transform:rotate(-90deg)}
+.ring .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-family:Fraunces,serif;font-size:1.6rem;font-weight:800;line-height:1}
+.ring .v small{display:block;font:700 .62rem Manrope;color:#cfd4ff;letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+.lvl{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:12px 16px}
+.lvl b{display:block;font-family:Fraunces,serif;font-size:1.35rem}
+.lvl span{font-size:.8rem;color:#cfd4ff}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;font-weight:800;background:var(--bloom);color:var(--night);box-shadow:0 10px 24px -10px rgba(143,162,255,.8);transition:transform .15s}
+.btn:active{transform:scale(.96)}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor;box-shadow:none}
+.btn.dark{background:var(--night);color:#fff}
+@media (prefers-color-scheme:dark){.btn.dark{background:var(--bloom);color:var(--night)}}
+.ticker{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin-top:18px;padding-bottom:4px;scroll-snap-type:x mandatory}
+.ticker::-webkit-scrollbar{display:none}
+.tk{flex:0 0 auto;scroll-snap-align:start;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:10px 14px;min-width:132px}
+.tk b{display:block;font-family:Fraunces,serif;font-size:1.55rem;line-height:1.1}
+.tk>span{font-size:.74rem;color:#cfd4ff}
+
+/* vistas */
+.view{display:none}.view.on{display:block;animation:fade .45s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+section{padding:26px 0 6px}
+.sub{color:var(--mute);margin-top:-.2em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);margin-bottom:16px}
+.grid{display:grid;gap:16px}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.tag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--frost);color:var(--berry)}
+@media (prefers-color-scheme:dark){.tag{color:var(--bloom)}}
+.tag.ok{background:var(--leaf2);color:var(--leaf)}
+.muted{color:var(--mute);font-size:.9rem}
+
+/* dato del día */
+.fact{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--berry),var(--night));color:#fff;border:0}
+.fact h3{color:#fff}
+.fact p{font-family:Fraunces,serif;font-size:1.3rem;line-height:1.3;margin:.2em 0 .4em}
+.fact .muted{color:#cfd4ff}
+
+/* tarjetas de módulo */
+.mods{display:grid;gap:16px}
+@media(min-width:720px){.mods{grid-template-columns:1fr 1fr}}
+.mod{position:relative;border-radius:var(--r);overflow:hidden;min-height:210px;color:#fff;background:var(--night);border:0;text-align:left;padding:0;box-shadow:var(--shadow);transition:transform .25s}
+.mod:hover{transform:translateY(-3px)}
+.mod img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
+.mod:hover img{transform:scale(1.1)}
+.mod:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,26,63,.05),rgba(21,26,63,.92) 75%)}
+.mod .in{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px}
+.mod .num{position:absolute;top:12px;left:14px;z-index:2;font-family:Fraunces,serif;font-weight:800;font-size:2.4rem;line-height:1;color:rgba(255,255,255,.85);text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.mod .st{position:absolute;top:14px;right:14px;z-index:2}
+.mod h3{font-size:1.25rem;margin:.35em 0 .5em}
+.bar{height:6px;border-radius:9px;background:rgba(255,255,255,.22);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--bloom);border-radius:9px;transition:width 1s ease}
+.st .tag{background:rgba(255,255,255,.9)}
+
+/* módulo abierto */
+.mhero{position:relative;height:300px;overflow:hidden;color:#fff;background:var(--night)}
+.mhero img{width:100%;height:100%;object-fit:cover;animation:kb 18s ease-in-out infinite alternate}
+.mhero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,26,63,.15),rgba(21,26,63,.95))}
+.mhero .wrap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:20px}
+.back{background:none;border:0;color:var(--berry);font-weight:800;padding:14px 0 0}
+@media (prefers-color-scheme:dark){.back{color:var(--bloom)}}
+.steps{display:flex;gap:6px;margin:4px 0 16px}
+.steps i{flex:1;height:5px;border-radius:5px;background:var(--line);transition:background .4s}
+.steps i.on{background:var(--berry)}.steps i.cur{background:var(--bloom)}
+.lesson h3{font-size:1.45rem}
+.lesson .body{font-size:1.02rem}
+.key{margin-top:14px;border-left:4px solid var(--leaf);background:var(--leaf2);padding:12px 14px;border-radius:0 12px 12px 0}
+.key b{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf);margin-bottom:2px}
+.nav2{display:flex;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap}
+
+/* quiz */
+.q h3{font-size:1.3rem}
+.opts{display:grid;gap:10px;margin-top:10px}
+.opt{text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600;transition:border-color .2s,background .2s,transform .15s}
+.opt:hover{border-color:var(--bloom)}
+.opt:active{transform:scale(.99)}
+.opt.ok{border-color:var(--leaf);background:var(--leaf2)}
+.opt.bad{border-color:var(--red);background:var(--red2)}
+.opt.part{border-color:var(--amber);background:var(--amber2)}
+.opt[disabled]{cursor:default}
+.fb{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--frost);animation:fade .35s}
+.score{font-family:Fraunces,serif;font-size:3.2rem;font-weight:800;line-height:1;color:var(--berry)}
+@media (prefers-color-scheme:dark){.score{color:var(--bloom)}}
+
+/* cifras */
+.bars{display:grid;gap:9px;margin-top:8px}
+.brow{display:grid;grid-template-columns:118px 1fr 52px;align-items:center;gap:8px;font-size:.88rem}
+.brow .t{height:22px;background:var(--frost);border-radius:7px;overflow:hidden}
+.brow .t i{display:block;height:100%;width:0;border-radius:7px;background:linear-gradient(90deg,var(--berry),var(--bloom));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.brow.hl .t i{background:linear-gradient(90deg,var(--amber),#f3b04a)}
+.brow.nat .t i{background:linear-gradient(90deg,var(--leaf),#5fb383)}
+.brow b{text-align:right}
+.big{font-family:Fraunces,serif;font-size:2.6rem;font-weight:800;line-height:1;color:var(--berry)}
+@media (prefers-color-scheme:dark){.big{color:var(--bloom)}}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vs .card{text-align:center;margin:0}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px}
+.seg button{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:7px 14px;font-weight:700;font-size:.85rem}
+.seg button.on{background:var(--night);color:#fff;border-color:var(--night)}
+@media (prefers-color-scheme:dark){.seg button.on{background:var(--bloom);color:var(--night);border-color:var(--bloom)}}
+.src{font-size:.78rem;color:var(--mute);margin-top:8px}
+
+/* casos */
+.case .ph{height:170px;border-radius:14px;overflow:hidden;margin:-4px -4px 14px}
+.case .ph img{width:100%;height:100%;object-fit:cover;transition:transform 6s}
+.case:hover .ph img{transform:scale(1.08)}
+
+/* glosario */
+.search{width:100%;padding:13px 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);font-size:1rem}
+.search:focus{outline:none;border-color:var(--bloom)}
+.term{border-bottom:1px solid var(--line);padding:12px 2px}
+.term b{font-family:Fraunces,serif;font-size:1.08rem}
+.term span{display:block;color:var(--mute);font-size:.92rem}
+.flash{perspective:1000px;height:230px;cursor:pointer;margin-bottom:12px}
+.flash .fi{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flash.flip .fi{transform:rotateY(180deg)}
+.flash .fa,.flash .fb2{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);display:grid;place-items:center;text-align:center;padding:22px}
+.flash .fa{background:linear-gradient(135deg,var(--night),var(--berry));color:#fff;font-family:Fraunces,serif;font-size:1.7rem;font-weight:800}
+.flash .fb2{background:var(--card);border:1px solid var(--line);transform:rotateY(180deg);font-size:1.02rem}
+
+footer{padding:26px 0 30px;color:var(--mute);font-size:.82rem;text-align:center}
+
+/* navegación inferior */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(21,26,63,.96);backdrop-filter:blur(12px);display:flex;justify-content:space-around;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.tabs button{flex:1;background:none;border:0;color:#aab3ea;font-weight:800;font-size:.78rem;padding:10px 2px;border-radius:12px;position:relative}
+.tabs button.on{color:#fff}
+.tabs button.on:after{content:"";position:absolute;left:30%;right:30%;bottom:3px;height:3px;border-radius:3px;background:var(--bloom)}
+.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--night);color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;font-size:.9rem;opacity:0;transition:.35s;z-index:60;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand" onclick="go('home')">Ruta del Experto<small id="brandSub">ARÁNDANO Y SEGURIDAD ALIMENTARIA</small></div>
+    <div class="sp"></div>
+    <button class="pill" data-l="es">ES</button><button class="pill" data-l="en">EN</button>
+  </div>
+  <div class="mini"><i id="miniBar"></i></div>
+</header>
+
+<main>
+  <div class="view" id="v-home"></div>
+  <div class="view" id="v-ruta"></div>
+  <div class="view" id="v-mod"></div>
+  <div class="view" id="v-exam"></div>
+  <div class="view" id="v-cifras"></div>
+  <div class="view" id="v-casos"></div>
+  <div class="view" id="v-glos"></div>
+</main>
+
+<nav class="tabs" id="tabs">
+  <button data-v="home"></button><button data-v="ruta"></button><button data-v="cifras"></button><button data-v="casos"></button><button data-v="glos"></button>
+</nav>
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script>
+const D=window.DATA, $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+let L='es';
+try{L=localStorage.getItem('ea-lang')||((navigator.language||'es').startsWith('en')?'en':'es')}catch(e){}
+const t=(es,en)=>L==='en'?en:es, T=a=>a?(L==='en'?a[1]:a[0]):'';
+const nf=(n,d=0)=>n.toLocaleString(L==='en'?'en-US':'es-CO',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* progreso guardado en este navegador */
+let P={read:{},quiz:{},cases:{},exam:null};
+try{P=Object.assign(P,JSON.parse(localStorage.getItem('ea-prog')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('ea-prog',JSON.stringify(P))}catch(e){}};
+const modDone=m=>{const r=(P.read[m.id]||[]).length>=m.lessons.length, q=(P.quiz[m.id]||0)>=4;return r&&q};
+function pct(){let tot=0,got=0;D.modules.forEach(m=>{tot+=m.lessons.length+5;got+=Math.min((P.read[m.id]||[]).length,m.lessons.length)+(P.quiz[m.id]||0)});tot+=D.cases.length;got+=Object.keys(P.cases).length;return Math.round(got/tot*100)}
+function level(){const p=pct(),ex=P.exam;if(ex&&ex>=17&&p>=90)return[t('Experto','Expert'),t('Dominas la ruta completa','You’ve mastered the full route')];
+ if(p>=60)return[t('Asesor','Adviser'),t('Ya puedes dar conceptos','You can give opinions now')];
+ if(p>=25)return[t('Conocedor','Practitioner'),t('Vas por buen camino','You’re on track')];
+ return[t('Aprendiz','Apprentice'),t('Empieza por el módulo 1','Start with module 1')]}
+
+/* fecha real de Colombia */
+const bogota=()=>{const s=new Date().toLocaleString('en-US',{timeZone:'America/Bogota'});return new Date(s)};
+const dayOfYear=d=>Math.floor((d-new Date(d.getFullYear(),0,0))/864e5);
+
+function toast(msg){const e=$('#toast');e.textContent=msg;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1800)}
+function reveal(){const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});$$('.reveal:not(.in)').forEach(e=>io.observe(e))}
+function countUp(){$$('[data-count]').forEach(el=>{const end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),suf=el.dataset.suf||'';let s=null;const step=ts=>{if(!s)s=ts;const k=Math.min((ts-s)/1200,1),e=1-Math.pow(1-k,3);el.textContent=nf(end*e,dec)+suf;if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)})}
+function grow(){setTimeout(()=>$$('[data-w]').forEach(e=>e.style.width=e.dataset.w+'%'),80)}
+function img(n){return `img/${n}.jpg`}
+const mix=n=>{const a=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+
+/* ───────── INICIO ───────── */
+let slideT;
+function home(){
+ const p=pct(),lv=level(),next=D.modules.find(m=>!modDone(m))||D.modules[0];
+ const fact=D.facts[dayOfYear(bogota())%D.facts.length];
+ const C=2*Math.PI*44;
+ $('#v-home').innerHTML=`
+ <div class="hero"><div class="slides">${['racimo2','plantacion','cosecheros','floracion','mercado','huerto-verde'].map((s,i)=>`<img src="${img(s)}" alt="" class="${i?'':'on'}">`).join('')}</div>
+  <div class="wrap">
+   <div class="kicker">${t('Vibras Positivas HM · Formación de asesores','Vibras Positivas HM · Adviser training')}</div>
+   <h1>${t('Arándano y seguridad alimentaria','Blueberry and food security')}</h1>
+   <p>${t('Diez módulos, casos reales y las cifras de 2026 con su fuente, para asesorar con criterio a productores, inversionistas y alcaldías en Colombia.','Ten modules, real cases and 2026 figures with sources, to advise growers, investors and town halls in Colombia with sound judgement.')}</p>
+   <div class="herorow">
+    <div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="rgba(255,255,255,.18)" stroke-width="9" fill="none"/><circle id="ringArc" cx="52" cy="52" r="44" stroke="#8fa2ff" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" style="transition:stroke-dashoffset 1.4s ease"/></svg><div class="v"><span><span data-count="${p}" data-suf="%">0%</span><small>${t('avance','progress')}</small></span></div></div>
+    <div class="lvl"><span>${t('Tu nivel','Your level')}</span><b>${lv[0]}</b><span>${lv[1]}</span></div>
+   </div>
+   <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn" onclick="openMod('${next.id}')">${p?t('Continuar','Continue'):t('Empezar la ruta','Start the route')}: ${T(next.title)}</button></div>
+   <div class="ticker">
+    <div class="tk"><b><span data-count="21.1" data-dec="1" data-suf="%">0</span></b><span>${t('hogares con inseguridad alimentaria (2025)','households food insecure (2025)')}</span></div>
+    <div class="tk"><b><span data-count="12.07" data-dec="2"></span> M</b><span>${t('personas en esa condición','people in that condition')}</span></div>
+    <div class="tk"><b>≈<span data-count="1000">0</span> ha</b><span>${t('de arándano en Colombia (2025)','of blueberry in Colombia (2025)')}</span></div>
+    <div class="tk"><b><span data-count="95" data-suf="%">0</span></b><span>${t('del arándano se consume en el país','of blueberries eaten at home')}</span></div>
+    <div class="tk"><b><span data-count="645">0</span> M</b><span>${t('personas con hambre en el mundo (2025)','people hungry worldwide (2025)')}</span></div>
+   </div>
+  </div></div>
+ <div class="wrap">
+  <section>
+   <div class="card fact reveal"><div class="kicker" style="color:#cfd4ff">${t('Dato del día','Fact of the day')} · ${bogota().toLocaleDateString(L==='en'?'en-US':'es-CO',{weekday:'long',day:'numeric',month:'long'})}</div><p>${T(fact)}</p><div class="muted">${t('Cambia cada día, con la hora de Colombia.','Changes daily, on Colombia time.')}</div></div>
+  </section>
+  <section>
+   <div class="kicker">${t('Cómo funciona','How it works')}</div>
+   <h2>${t('Tu camino a experto','Your path to expert')}</h2>
+   <div class="grid g3">
+    ${[[t('Aprende','Learn'),t('Lee cada lección y quédate con la idea clave del asesor.','Read each lesson and keep the adviser’s key idea.'),'yema'],[t('Demuestra','Prove it'),t('Responde el quiz de cada módulo. Con 4 de 5 lo dominas.','Take each module quiz. 4 out of 5 means mastered.'),'calidad-fresco'],[t('Asesora','Advise'),t('Resuelve casos reales y presenta el examen final.','Solve real cases and take the final exam.'),'cosecheros']].map((x,i)=>`
+    <div class="card reveal" style="padding:0;overflow:hidden"><img src="${img(x[2])}" alt="" style="height:130px;width:100%;object-fit:cover"><div style="padding:16px"><span class="tag">${t('Paso','Step')} ${i+1}</span><h3 style="margin-top:8px">${x[0]}</h3><p class="muted" style="margin:0">${x[1]}</p></div></div>`).join('')}
+   </div>
+  </section>
+  <section>
+   <div class="card reveal" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+    <div><h3 style="margin:0">${t('Examen final','Final exam')}</h3><p class="muted" style="margin:.2em 0 0">${P.exam!=null?t(`Tu mejor resultado: ${P.exam} de 20.`,`Your best score: ${P.exam} out of 20.`):t('20 preguntas al azar de toda la ruta. Con 17 o más, y 90% de avance, llegas a Experto.','20 random questions from the whole route. With 17+ and 90% progress, you reach Expert.')}</p></div>
+    <button class="btn dark" onclick="exam()">${t('Presentar examen','Take the exam')}</button>
+   </div>
+  </section>
+  ${foot()}
+ </div>`;
+ setTimeout(()=>{const a=$('#ringArc');if(a)a.style.strokeDashoffset=C*(1-p/100)},120);
+ clearInterval(slideT);let si=0;slideT=setInterval(()=>{const im=$$('#v-home .slides img');if(!im.length)return;im[si].classList.remove('on');si=(si+1)%im.length;im[si].classList.add('on')},5200);
+}
+
+/* ───────── RUTA ───────── */
+function ruta(){
+ $('#v-ruta').innerHTML=`<div class="wrap"><section>
+  <div class="kicker">${t('La ruta','The route')}</div><h2>${t('Diez módulos, de la planta al asesor','Ten modules, from plant to adviser')}</h2>
+  <p class="sub">${t('Puedes ir en orden o saltar al que necesites. Tu avance queda guardado en este celular.','Go in order or jump to what you need. Progress is saved on this phone.')}</p>
+  <div class="mods">${D.modules.map((m,i)=>{const r=Math.min((P.read[m.id]||[]).length,m.lessons.length),q=P.quiz[m.id]||0,w=Math.round((r+q)/(m.lessons.length+5)*100);
+   return `<button class="mod reveal" onclick="openMod('${m.id}')"><img src="${img(m.img)}" alt="" loading="lazy"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="st">${modDone(m)?`<span class="tag ok">${t('Dominado','Mastered')}</span>`:`<span class="tag">${T(m.level)}</span>`}</span><div class="in"><h3>${T(m.title)}</h3><div class="bar"><i data-w="${w}"></i></div><div style="font-size:.76rem;color:#cfd4ff;margin-top:6px">${r}/${m.lessons.length} ${t('lecciones','lessons')} · ${t('quiz','quiz')} ${q}/5</div></div></button>`}).join('')}</div>
+  <div class="card reveal" style="margin-top:18px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap"><div><h3 style="margin:0">${t('Examen final','Final exam')}</h3><p class="muted" style="margin:0">${t('20 preguntas de toda la ruta.','20 questions from the whole route.')}</p></div><button class="btn dark" onclick="exam()">${t('Presentar','Take it')}</button></div>
+ </section>${foot()}</div>`;
+}
+
+/* ───────── MÓDULO ───────── */
+let cur=null,li=0;
+function openMod(id,step){
+ cur=D.modules.find(m=>m.id===id);li=step||0;go('mod',true);renderMod();
+}
+function renderMod(){
+ const m=cur,i=D.modules.indexOf(m),n=m.lessons.length,isQuiz=li>=n;
+ const read=P.read[m.id]||[];
+ $('#v-mod').innerHTML=`
+ <div class="mhero"><img src="${img(m.img)}" alt=""><div class="wrap"><span class="tag" style="background:rgba(255,255,255,.9)">${t('Módulo','Module')} ${i+1} · ${T(m.level)}</span><h2 style="margin-top:8px">${T(m.title)}</h2></div></div>
+ <div class="wrap">
+  <button class="back" onclick="go('ruta')">← ${t('Volver a la ruta','Back to route')}</button>
+  <section style="padding-top:12px">
+   ${li===0?`<p style="font-size:1.08rem">${T(m.intro)}</p>`:''}
+   <div class="steps">${m.lessons.map((_,k)=>`<i class="${k===li?'cur':read.includes(k)?'on':''}"></i>`).join('')}<i class="${isQuiz?'cur':(P.quiz[m.id]>=4?'on':'')}"></i></div>
+   <div id="modBody"></div>
+  </section>${foot()}
+ </div>`;
+ if(isQuiz){runQuiz(m.quiz,'mod')}
+ else{
+  const ls=m.lessons[li];
+  $('#modBody').innerHTML=`<div class="card lesson"><div class="muted">${t('Lección','Lesson')} ${li+1} ${t('de','of')} ${n}</div><h3>${T(ls.t)}</h3><div class="body">${T(ls.b)}</div><div class="key"><b>${t('Lo que diría un asesor','What an adviser would say')}</b>${T(ls.k)}</div></div>
+  <div class="nav2"><button class="btn ghost" ${li?'':'disabled style="opacity:.35"'} onclick="li--;renderMod();scrollTo(0,250)">← ${t('Anterior','Previous')}</button><button class="btn dark" onclick="markRead();li++;renderMod();scrollTo(0,250)">${li===n-1?t('Ir al quiz','Go to quiz'):t('Entendido, siguiente','Got it, next')} →</button></div>`;
+ }
+}
+function markRead(){const a=P.read[cur.id]=P.read[cur.id]||[];if(!a.includes(li))a.push(li);save();updMini()}
+
+/* quiz y examen comparten el motor */
+function runQuiz(qs,mode){
+ let k=0,ok=0;const box=$(mode==='mod'?'#modBody':'#examBody');
+ const draw=()=>{
+  if(k>=qs.length){return finish()}
+  const q=qs[k];
+  box.innerHTML=`<div class="card q"><div class="muted">${mode==='mod'?t('Quiz del módulo','Module quiz'):t('Examen final','Final exam')} · ${k+1}/${qs.length}</div><h3>${T(q.q)}</h3><div class="opts">${mix(q.o.length).map(j=>`<button class="opt" data-j="${j}">${T(q.o[j])}</button>`).join('')}</div><div id="fb"></div></div>`;
+  $$('.opt').forEach(b=>b.onclick=()=>{
+   const j=+b.dataset.j,right=j===q.a;if(right)ok++;
+   $$('.opt').forEach(x=>{x.disabled=true;const jj=+x.dataset.j;if(jj===q.a)x.classList.add('ok');else if(jj===j)x.classList.add('bad')});
+   $('#fb').innerHTML=`<div class="fb"><b>${right?t('Correcto.','Correct.'):t('No es esa.','Not that one.')}</b> ${T(q.e)}</div><div class="nav2"><span></span><button class="btn dark" id="nx">${k===qs.length-1?t('Ver resultado','See result'):t('Siguiente','Next')} →</button></div>`;
+   $('#nx').onclick=()=>{k++;draw()};
+  });
+ };
+ const finish=()=>{
+  if(mode==='mod'){P.quiz[cur.id]=Math.max(P.quiz[cur.id]||0,ok);save();updMini()}
+  else{P.exam=Math.max(P.exam||0,ok);save();updMini()}
+  const pass=mode==='mod'?ok>=4:ok>=17;
+  const nextM=mode==='mod'?D.modules[D.modules.indexOf(cur)+1]:null;
+  box.innerHTML=`<div class="card" style="text-align:center"><div class="score"><span data-count="${ok}">0</span>/${qs.length}</div><h3 style="margin-top:8px">${pass?(mode==='mod'?t('Módulo dominado','Module mastered'):t('Nivel de experto en el examen','Expert‑level exam score')):t('Repasa y vuelve a intentarlo','Review and try again')}</h3>
+  <p class="muted">${mode==='mod'?t('Con 4 de 5 el módulo queda dominado.','4 out of 5 masters the module.'):t('Para llegar a Experto necesitas 17 de 20 y 90% de avance en la ruta.','To reach Expert you need 17/20 and 90% route progress.')}</p>
+  <div class="nav2" style="justify-content:center">${mode==='mod'?`<button class="btn ghost" onclick="li=0;renderMod();scrollTo(0,250)">${t('Repasar lecciones','Review lessons')}</button><button class="btn ghost" onclick="renderMod()">${t('Repetir quiz','Retake quiz')}</button>${nextM?`<button class="btn dark" onclick="openMod('${nextM.id}')">${t('Siguiente módulo','Next module')} →</button>`:`<button class="btn dark" onclick="exam()">${t('Examen final','Final exam')} →</button>`}`:`<button class="btn ghost" onclick="exam()">${t('Otro examen','Another exam')}</button><button class="btn dark" onclick="go('home')">${t('Ver mi nivel','See my level')}</button>`}</div></div>`;
+  countUp();if(pass)toast(t('Bien hecho','Well done'));
+ };
+ draw();
+}
+function exam(){
+ go('exam',true);
+ const pool=D.modules.flatMap(m=>m.quiz),qs=pool.map(q=>[Math.random(),q]).sort((a,b)=>a[0]-b[0]).slice(0,20).map(x=>x[1]);
+ $('#v-exam').innerHTML=`<div class="mhero" style="height:220px"><img src="${img('calidad-fresco')}" alt=""><div class="wrap"><span class="tag" style="background:rgba(255,255,255,.9)">${t('20 preguntas','20 questions')}</span><h2 style="margin-top:8px">${t('Examen final','Final exam')}</h2></div></div><div class="wrap"><button class="back" onclick="go('ruta')">← ${t('Volver','Back')}</button><section style="padding-top:12px"><div id="examBody"></div></section>${foot()}</div>`;
+ runQuiz(qs,'exam');
+}
+
+/* ───────── CIFRAS ───────── */
+let cTab='hambre';
+function cifras(){
+ const dep=[['Chocó',56.8],['Sucre',50.1],['La Guajira',47.8],['Córdoba',40.2],['Atlántico',33.0],['Guaviare',27.1],[t('Nacional','National'),21.1,'nat'],['Antioquia',20.1,'hl'],['Casanare',17.5],['Cundinamarca',13.1],['Arauca',11.0],['Risaralda',10.3],['Bogotá',9.6],['Caldas',9.2],['San Andrés',5.2]];
+ const tabs=[['hambre',t('Hambre en Colombia','Food insecurity in Colombia')],['arandano',t('Arándano','Blueberry')],['mundo',t('El mundo','The world')],['fuentes',t('Fuentes','Sources')]];
+ let h='';
+ if(cTab==='hambre')h=`
+  <div class="grid g3">
+   <div class="card reveal"><div class="big"><span data-count="21.1" data-dec="1" data-suf="%">0</span></div><p class="muted" style="margin:.3em 0 0">${t('hogares con inseguridad alimentaria moderada o grave (2025)','households with moderate or severe food insecurity (2025)')}</p></div>
+   <div class="card reveal"><div class="big"><span data-count="3.4" data-dec="1" data-suf="%">0</span></div><p class="muted" style="margin:.3em 0 0">${t('hogares en inseguridad grave (5,0% en 2024)','households severely food insecure (5.0% in 2024)')}</p></div>
+   <div class="card reveal"><div class="big"><span data-count="12.07" data-dec="2">0</span> M</div><p class="muted" style="margin:.3em 0 0">${t('personas (22,8% de la población)','people (22.8% of the population)')}</p></div>
+  </div>
+  <div class="card reveal"><h3>${t('Por departamento, 2025','By department, 2025')}</h3><p class="muted">${t('Hogares con inseguridad alimentaria moderada o grave. En naranja, Antioquia; en verde, el total nacional.','Households with moderate or severe food insecurity. Orange: Antioquia; green: national total.')}</p>
+   <div class="bars">${dep.map(d=>`<div class="brow ${d[2]||''}"><span>${d[0]}</span><div class="t"><i data-w="${d[1]/60*100}"></i></div><b>${nf(d[1],1)}%</b></div>`).join('')}</div>
+   <div class="src">${t('Fuente: DANE con FAO, ECV 2025, publicado el 21 de mayo de 2026. Selección de departamentos.','Source: DANE with FAO, ECV 2025, published 21 May 2026. Selected departments.')}</div></div>
+  <div class="grid g2">
+   <div class="card reveal"><h3>${t('Cómo ha bajado','How it has fallen')}</h3><div class="bars">${[['2022',28.1],['2024',25.5],['2025',21.1]].map(d=>`<div class="brow"><span>${d[0]}</span><div class="t"><i data-w="${d[1]/30*100}"></i></div><b>${nf(d[1],1)}%</b></div>`).join('')}</div><div class="src">${t('Hogares, moderada o grave. DANE‑FAO.','Households, moderate or severe. DANE‑FAO.')}</div></div>
+   <div class="card reveal"><h3>${t('Campo y ciudad','Rural and urban')}</h3><div class="bars">${[[t('Rural','Rural'),31.4,'hl'],[t('Urbano','Urban'),18.1]].map(d=>`<div class="brow ${d[2]||''}"><span>${d[0]}</span><div class="t"><i data-w="${d[1]/35*100}"></i></div><b>${nf(d[1],1)}%</b></div>`).join('')}</div><p class="muted" style="margin-top:10px">${t('Hogares que se consideran pobres: 42,2%. Los que no: 8,4%.','Households that consider themselves poor: 42.2%. Those that don’t: 8.4%.')}</p></div>
+  </div>
+  <div class="card reveal"><h3>${t('Desperdicio de comida','Food waste')}</h3><div class="vs"><div><div class="big"><span data-count="9.76" data-dec="2">0</span> Mt</div><p class="muted">${t('toneladas de alimentos perdidas o desperdiciadas al año (34%)','tonnes of food lost or wasted a year (34%)')}</p></div><div><div class="big"><span data-count="58" data-suf="%">0</span></div><p class="muted">${t('de las frutas y verduras se pierde','of fruit and vegetables is lost')}</p></div></div><div class="src">${t('Fuente: DNP, estudio de 2016 que sigue siendo la referencia.','Source: DNP, 2016 study still used as reference.')}</div></div>`;
+ if(cTab==='arandano')h=`
+  <div class="grid g3">
+   <div class="card reveal"><div class="big">≈<span data-count="1000">0</span></div><p class="muted" style="margin:.3em 0 0">${t('hectáreas en 2025 (1.200 esperadas en 2026)','hectares in 2025 (1,200 expected in 2026)')}</p></div>
+   <div class="card reveal"><div class="big"><span data-count="12000">0</span> t</div><p class="muted" style="margin:.3em 0 0">${t('producción 2025 según Asocolblue','2025 output per Asocolblue')}</p></div>
+   <div class="card reveal"><div class="big"><span data-count="95" data-suf="%">0</span></div><p class="muted" style="margin:.3em 0 0">${t('se consume en Colombia','eaten in Colombia')}</p></div>
+  </div>
+  <div class="card reveal"><h3>${t('Exporta poco, importa más','Exports little, imports more')}</h3><div class="bars">${[[t('Exportó 2024','Exported 2024'),3.3],[t('Exportó 2025','Exported 2025'),3.1],[t('Importó ene–sep 2025','Imported Jan–Sep 2025'),10,'hl']].map(d=>`<div class="brow ${d[2]||''}"><span>${d[0]}</span><div class="t"><i data-w="${d[1]/11*100}"></i></div><b>${d[2]?'>':''}${nf(d[1],1)}</b></div>`).join('')}</div><div class="src">${t('Millones de dólares. Fuente: Asocolblue en Portal Frutícola (2026) y Portafolio (2025).','US$ million. Source: Asocolblue in Portal Frutícola (2026) and Portafolio (2025).')}</div></div>
+  <div class="card reveal"><h3>${t('Proyección contra dato','Projection vs. data')}</h3><p class="muted">${t('Hectáreas para 2026: lo que se proyectó en marzo de 2025 y lo que reporta el gremio.','Hectares for 2026: what was projected in March 2025 and what growers report.')}</p><div class="bars">${[[t('Proyectado','Projected'),5000,'hl'],[t('Reportado','Reported'),1200]].map(d=>`<div class="brow ${d[2]||''}"><span>${d[0]}</span><div class="t"><i data-w="${d[1]/5000*100}"></i></div><b>${nf(d[1])}</b></div>`).join('')}</div><div class="src">${t('UPRA y Agroventure Capital (2025, rango 3.000–5.000) frente a Asocolblue (2026).','UPRA and Agroventure Capital (2025, range 3,000–5,000) vs Asocolblue (2026).')}</div></div>
+  <div class="grid g2">
+   <div class="card reveal" style="padding:0;overflow:hidden"><img src="${img('cosecheros')}" alt="" style="height:170px;width:100%;object-fit:cover"><div style="padding:16px"><div class="big"><span data-count="5000">0</span></div><p class="muted" style="margin:.2em 0 0">${t('empleos directos, sobre todo de mujeres rurales cabeza de familia, y unos 25.000 indirectos','direct jobs, mostly rural women heads of household, plus about 25,000 indirect')}</p></div></div>
+   <div class="card reveal" style="padding:0;overflow:hidden"><img src="${img('racimo')}" alt="" style="height:170px;width:100%;object-fit:cover"><div style="padding:16px"><div class="big">2.200–2.900 m</div><p class="muted" style="margin:.2em 0 0">${t('altura del arándano de montaña colombiano','altitude of Colombian mountain blueberries')}</p></div></div>
+  </div>`;
+ if(cTab==='mundo')h=`
+  <div class="grid g2">
+   <div class="card reveal"><div class="big"><span data-count="645">0</span> M</div><p class="muted">${t('personas con hambre en 2025 (7,8% del mundo)','people hungry in 2025 (7.8% of the world)')}</p></div>
+   <div class="card reveal"><div class="big"><span data-count="2100">0</span> M</div><p class="muted">${t('con inseguridad alimentaria moderada o grave (25,8%)','moderately or severely food insecure (25.8%)')}</p></div>
+  </div>
+  <div class="card reveal"><h3>${t('Colombia frente a Perú en arándano, 2025','Colombia vs Peru in blueberries, 2025')}</h3><p class="muted">${t('Exportaciones en millones de dólares. La barra de Colombia casi no se ve: esa es la distancia.','Exports in US$ million. Colombia’s bar is barely visible: that’s the gap.')}</p><div class="bars">${[['Perú',2457,'hl'],['Colombia',3.1]].map(d=>`<div class="brow ${d[2]||''}"><span>${d[0]}</span><div class="t"><i data-w="${Math.max(d[1]/2457*100,.6)}"></i></div><b>${nf(d[1],d[1]<10?1:0)}</b></div>`).join('')}</div><div class="src">${t('Perú: Midagri (373.514 t). Colombia: Asocolblue.','Peru: Midagri (373,514 t). Colombia: Asocolblue.')}</div></div>
+  <div class="card reveal"><h3>${t('Producción mundial de arándano','World blueberry output')}</h3><div class="bars">${[['2018',1.0],['2024',2.1],['2028*',3.1,'hl']].map(d=>`<div class="brow ${d[2]||''}"><span>${d[0]}</span><div class="t"><i data-w="${d[1]/3.2*100}"></i></div><b>${nf(d[1],1)} Mt</b></div>`).join('')}</div><div class="src">${t('Moody’s; *proyección de la IBO (más de 3,1 millones de toneladas).','Moody’s; *IBO projection (over 3.1 million tonnes).')}</div></div>`;
+ if(cTab==='fuentes')h=`<div class="card"><h3>${t('Fuentes consultadas','Sources consulted')}</h3><p class="muted">${t('Cifras revisadas el 30 de octubre de 2026. Cuando una cifra cambie, prevalece la fuente oficial más reciente.','Figures checked on 30 October 2026. When a figure changes, the latest official source prevails.')}</p><ol>${D.sources.map(s=>`<li><a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a></li>`).join('')}</ol></div>`;
+ $('#v-cifras').innerHTML=`<div class="wrap"><section><div class="kicker">${t('Cifras clave','Key figures')}</div><h2>${t('Los números que un experto se sabe','Numbers an expert knows')}</h2><p class="sub">${t('Siempre con fuente y fecha.','Always with source and date.')}</p>
+  <div class="seg">${tabs.map(x=>`<button class="${cTab===x[0]?'on':''}" onclick="cTab='${x[0]}';cifras();reveal();countUp();grow()">${x[1]}</button>`).join('')}</div>${h}</section>${foot()}</div>`;
+}
+
+/* ───────── CASOS ───────── */
+function casos(){
+ $('#v-casos').innerHTML=`<div class="wrap"><section><div class="kicker">${t('Práctica','Practice')}</div><h2>${t('Casos de asesoría','Advisory cases')}</h2><p class="sub">${t('Situaciones reales del trabajo de un asesor. Elige qué harías y mira por qué.','Real situations from an adviser’s work. Choose what you’d do and see why.')}</p>
+ ${D.cases.map((c,i)=>`<div class="card case reveal" id="case${i}"><div class="ph"><img src="${img(c.img)}" alt="" loading="lazy"></div><span class="tag">${t('Caso','Case')} ${i+1}</span>${P.cases[i]!=null?` <span class="tag ok">${t('Resuelto','Solved')}</span>`:''}<h3 style="margin-top:8px">${T(c.t)}</h3><p>${T(c.s)}</p><div class="opts">${mix(c.o.length).map(j=>`<button class="opt" data-j="${j}" onclick="pickCase(${i},${j})">${T(c.o[j][0])}</button>`).join('')}</div><div class="cfb"></div></div>`).join('')}
+ </section>${foot()}</div>`;
+}
+function pickCase(i,j){
+ const c=D.cases[i],box=$('#case'+i),o=c.o[j];
+ box.querySelectorAll('.opt').forEach(b=>{const k=+b.dataset.j;b.disabled=true;const s=c.o[k][1];if(s===2)b.classList.add('ok');else if(k===j)b.classList.add(s===1?'part':'bad')});
+ box.querySelector('.cfb').innerHTML=`<div class="fb"><b>${o[1]===2?t('La mejor decisión.','Best decision.'):o[1]===1?t('Tiene algo de razón, pero hay una mejor.','Partly right, but there’s a better one.'):t('No es buena idea.','Not a good idea.')}</b> ${T(o[2])}</div>`;
+ if(o[1]===2&&P.cases[i]==null){P.cases[i]=1;save();updMini();toast(t('Caso resuelto','Case solved'))}
+}
+
+/* ───────── GLOSARIO ───────── */
+let gMode='list',fi=0,fq='';
+function glos(){
+ const G=D.glossary.slice().sort((a,b)=>T([a[0],a[1]]).localeCompare(T([b[0],b[1]]),'es'));
+ const list=G.filter(g=>!fq||(T([g[0],g[1]])+' '+T([g[2],g[3]])).toLowerCase().includes(fq.toLowerCase()));
+ $('#v-glos').innerHTML=`<div class="wrap"><section><div class="kicker">${t('Vocabulario','Vocabulary')}</div><h2>${t('Glosario del experto','Expert glossary')}</h2><p class="sub">${G.length} ${t('términos que vas a usar en cada conversación.','terms you’ll use in every conversation.')}</p>
+ <div class="seg"><button class="${gMode==='list'?'on':''}" onclick="gMode='list';glos()">${t('Lista','List')}</button><button class="${gMode==='flash'?'on':''}" onclick="gMode='flash';fi=0;glos()">${t('Tarjetas para memorizar','Flashcards')}</button></div>
+ ${gMode==='list'?`<input class="search" id="gq" placeholder="${t('Buscar término…','Search a term…')}" value="${fq}"><div class="card" style="margin-top:12px" id="glist">${list.map(g=>`<div class="term"><b>${T([g[0],g[1]])}</b><span>${T([g[2],g[3]])}</span></div>`).join('')||`<p class="muted">${t('Sin resultados.','No results.')}</p>`}</div>`
+ :`<div class="flash" id="fc" onclick="this.classList.toggle('flip')"><div class="fi"><div class="fa">${T([G[fi][0],G[fi][1]])}</div><div class="fb2">${T([G[fi][2],G[fi][3]])}</div></div></div><p class="muted" style="text-align:center">${t('Toca la tarjeta para voltearla','Tap the card to flip it')} · ${fi+1}/${G.length}</p><div class="nav2"><button class="btn ghost" onclick="fi=(fi-1+${G.length})%${G.length};glos()">← ${t('Anterior','Previous')}</button><button class="btn dark" onclick="fi=(fi+1)%${G.length};glos()">${t('Siguiente','Next')} →</button></div>`}
+ </section>${foot()}</div>`;
+ const q=$('#gq');if(q){q.oninput=e=>{fq=e.target.value;const p=q.selectionStart;glos();const n=$('#gq');n.focus();n.setSelectionRange(p,p)}}
+}
+
+function foot(){return `<footer>${t('Contenido educativo para formación de asesores. No es asesoría financiera ni legal.','Educational content for adviser training. Not financial or legal advice.')}<br>${t('Cifras revisadas el 30 de octubre de 2026','Figures checked on 30 October 2026')} · <a href="#" onclick="cTab='fuentes';go('cifras');return false">${t('Fuentes','Sources')}</a> · <a href="#" onclick="if(confirmReset())go('home');return false">${t('Reiniciar avance','Reset progress')}</a><br><br>Vibras Positivas HM — ${t('Derechos de Autor Reservados','All Rights Reserved')} · <a href="https://vibraspositivashm.com" target="_blank" rel="noopener">vibraspositivashm.com</a></footer>`}
+function confirmReset(){if(!confirm(t('¿Borrar todo tu avance en este celular?','Erase all your progress on this phone?')))return false;P={read:{},quiz:{},cases:{},exam:null};save();updMini();toast(t('Avance reiniciado','Progress reset'));return true}
+
+/* ───────── navegación ───────── */
+const views={home,ruta,cifras,casos,glos};
+let curV='home';
+function go(v,noRender){
+ curV=v;$$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
+ $$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v||(v==='mod'||v==='exam')&&b.dataset.v==='ruta'));
+ if(!noRender&&views[v])views[v]();
+ scrollTo(0,0);setTimeout(()=>{reveal();countUp();grow()},30);
+ try{history.replaceState(null,'','#'+v)}catch(e){}
+}
+function labels(){
+ const n={home:t('Inicio','Home'),ruta:t('Ruta','Route'),cifras:t('Cifras','Figures'),casos:t('Casos','Cases'),glos:t('Glosario','Glossary')};
+ $$('#tabs button').forEach(b=>b.textContent=n[b.dataset.v]);
+ $$('.pill').forEach(b=>b.classList.toggle('on',b.dataset.l===L));
+ $('#brandSub').textContent=t('ARÁNDANO Y SEGURIDAD ALIMENTARIA','BLUEBERRY AND FOOD SECURITY');
+ document.documentElement.lang=L;
+}
+function updMini(){$('#miniBar').style.width=pct()+'%'}
+$$('#tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+$$('.pill').forEach(b=>b.onclick=()=>{L=b.dataset.l;try{localStorage.setItem('ea-lang',L)}catch(e){}labels();
+ if(curV==='mod')renderMod();else if(curV==='exam')exam();else go(curV);setTimeout(()=>{reveal();countUp();grow()},30)});
+labels();updMini();
+const h=(location.hash||'').slice(1);go(views[h]?h:'home');
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
