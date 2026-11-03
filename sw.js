@@ -1,4 +1,4 @@
-const C='experto-arandano-v2';
+const C='experto-arandano-v3';
 const FILES=['./','index.html','data.js','guias.js','manifest.json','icon-192.png','icon-512.png',
 'img/racimo2.jpg','img/racimo.jpg','img/floracion.jpg','img/plantacion.jpg','img/huerto-verde.jpg','img/huerto-otono.jpg','img/cosecheros.jpg','img/mano-cosecha.jpg','img/bolsas-sustrato.jpg','img/cultivo-cubierto.jpg','img/calidad-fresco.jpg','img/poda-duke.jpg','img/yema.jpg','img/ins-trips.jpg','img/bayas.jpg','img/cosecha-hileras.jpg','img/arbusto.jpg','img/mercado.jpg','img/huerto.jpg'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()))});

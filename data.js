@@ -40,6 +40,9 @@ modules: [
    {t:['Bolsa y sustrato','Bags and substrate'],
     b:['En la finca de Soatá (Boyacá) documentada por la UNAD se siembra en <b>bolsas de polietileno negro de 50 litros</b> y 50 cm de alto, con sustrato sin suelo. Ventajas: menos plagas y enfermedades del suelo, buen equilibrio aire‑agua y control del pH. Desventaja: todo depende del riego; un día sin agua se nota.','The Soatá (Boyacá) farm documented by UNAD grows in <b>black 50‑litre polyethylene bags</b>, 50 cm tall, with soil‑free substrate. Pros: fewer soil pests and diseases, good air‑water balance and pH control. Con: everything depends on irrigation; one dry day shows.'],
     k:['En sistema de bolsa, revisa primero el riego: goteros, frecuencia, drenaje y pH del agua de salida.','In bag systems, check irrigation first: drippers, frequency, drainage and run‑off pH.']},
+   {t:['Hidroponía: macetas y fibra de coco','Hydroponics: pots and coir'],
+    b:['Gran parte del arándano de Perú y México se siembra en <b>macetas, bolsas o slabs con fibra de coco</b>, alimentado por goteo. La fibra debe venir <b>lavada y tamponada</b> (CE de 1,5 dS/m o menos), con suficiente fibra gruesa para dar aire a la raíz. Como referencia, el sustrato del arándano en maceta debe tener más de 75% de porosidad y retener 30–50% de agua, con unos 35 litros por planta. Un proveedor de referencia en la región es <b>DIDIHU Global</b> (México, @wearedidihu), que diseña sustratos de coco y fabrica macetas hidropónicas y slabs para berries.','Much of Peru’s and Mexico’s blueberries are grown in <b>pots, bags or slabs with coconut coir</b>, fed by drip. Coir must arrive <b>washed and buffered</b> (EC 1.5 dS/m or less), with enough coarse fibre to aerate roots. As a reference, potted blueberry substrate should exceed 75% porosity and hold 30–50% water, with about 35 litres per plant. A regional reference supplier is <b>DIDIHU Global</b> (Mexico, @wearedidihu), which designs coir substrates and makes hydroponic pots and slabs for berries.'],
+    k:['Antes de comprar sustrato, pide el análisis del lote. Un coco salado arruina la siembra desde el primer día.','Before buying substrate, ask for the batch analysis. Salty coir ruins a planting from day one.']},
    {t:['Riego y fertirriego','Irrigation and fertigation'],
     b:['Se riega por goteo y se fertiliza por la misma manguera (fertirriego). La cuenta del agua se hace con la evaporación del día, el coeficiente del cultivo y la eficiencia del goteo (cerca de 90%). El análisis foliar, una vez al año, dice si sobra o falta algún nutriente. El exceso de nitrógeno favorece hongos como Botrytis.','Drip irrigation, with fertiliser through the same line (fertigation). Water is calculated from daily evaporation, the crop coefficient and drip efficiency (about 90%). A yearly leaf analysis shows nutrient surpluses or gaps. Excess nitrogen favours fungi such as Botrytis.'],
     k:['Pide registros: cuánto se regó, qué se aplicó y cuándo. Sin registros no hay certificación.','Ask for records: how much was irrigated, what was applied and when. No records, no certification.']},
@@ -318,6 +321,9 @@ cases:[
 
 /* ───────────── Glosario ───────────── */
 glossary:[
+ ['Fibra de coco lavada y tamponada','Washed and buffered coir','Sustrato de coco al que se le quitaron sales y sodio y se equilibró con calcio y magnesio antes de usarlo.','Coir with salts and sodium removed and balanced with calcium and magnesium before use.'],
+ ['Slab','Slab','Saco alargado lleno de sustrato (por ejemplo fibra de coco) donde se siembran varias plantas en hidroponía.','Long grow bag filled with substrate (e.g. coir) holding several plants in hydroponics.'],
+ ['Porosidad del sustrato','Substrate porosity','Espacio del sustrato ocupado por aire y agua; en arándano en maceta, más de 75%.','Share of substrate volume held by air and water; over 75% for potted blueberries.'],
  ['Admisibilidad','Market access','Permiso sanitario que un país da para que entre un producto de otro, tras negociar requisitos.','A country’s plant/animal‑health clearance for another country’s product, after negotiating requirements.'],
  ['Agraz o mortiño','Agraz / mortiño','Vaccinium meridionale, arándano andino nativo de Colombia; da dos cosechas al año.','Vaccinium meridionale, Colombia’s native Andean blueberry; two harvests a year.'],
  ['Antocianinas','Anthocyanins','Pigmentos azules y morados de la fruta, con capacidad antioxidante.','Blue and purple fruit pigments with antioxidant capacity.'],
@@ -358,6 +364,7 @@ glossary:[
 
 /* ───────────── Datos para el día ───────────── */
 facts:[
+ ['La fibra de coco para arándano debe llegar lavada, con CE de 1,5 dS/m o menos.','Coir for blueberries should arrive washed, at EC 1.5 dS/m or less.'],
  ['El arándano necesita suelo ácido: pH de 4,5 a 5,0.','Blueberry needs acidic soil: pH 4.5 to 5.0.'],
  ['Colombia consume cerca del 95% de su propio arándano.','Colombia eats about 95% of its own blueberries.'],
  ['Perú exportó 373.514 toneladas de arándano en 2025.','Peru exported 373,514 tonnes of blueberries in 2025.'],
@@ -405,6 +412,8 @@ sources:[
  ['Vanguardia — Posesión de Abelardo de la Espriella','https://www.vanguardia.com/colombia/2026/08/07/abelardo-de-la-espriella-tomo-posesion-como-nuevo-presidente-de-colombia-2026-2030/'],
  ['Telemedellín — Indalecio Dangond, ministro de Agricultura','https://telemedellin.tv/?p=186998'],
  ['Fedepalma — Resultados ENSIN 2015','https://publicaciones.fedepalma.org/index.php/salud/article/download/12390/12305/14172'],
+ ['HortiDaily — Didihu y la fibra gruesa para oxigenación (ene. 2024)','https://hortidaily.com/article/9592815/we-want-the-substrate-to-have-thick-fibers-to-ensure-enough-oxygenation'],
+ ['Portal Frutícola — Sustratos para berries en contenedores (2026)','https://www.portalfruticola.com/?p=613069'],
  ['Guías técnicas de Arándano Pro: INIA (2013, 2017), CIREN (2020) y UNAD, finca de Soatá (2021)','https://arandano-pro.netlify.app/']
 ]
 };
